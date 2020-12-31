@@ -11,21 +11,34 @@ namespace WebApiExample.Controllers
     public class UserController : ApiController
     {
 
-
-
-
-
 		[AllowAnonymous]
 		[HttpGet]
 		[Route("api/data/forall")]
 		public IHttpActionResult Get()
 		{
+            var token = ActionContext.Request.Headers.Authorization.Parameter;
 
-			return Ok("now server time is " + DateTime.Now.ToString());
+            return Ok("now server time is " + DateTime.Now.ToString());
 		}
 
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("api/data/getToken")]
+        public IHttpActionResult GetToken() {
+
+            var identity = (ClaimsIdentity)User.Identity; 
+            identity.AddClaim(new Claim(ClaimTypes.Role, "user"));
+            identity.AddClaim(new Claim("username", "user"));
+            identity.AddClaim(new Claim(ClaimTypes.Name, "Hello user"));
+
+
+
+            return Ok("did it work? ");
+            
+        }
+
 		[Authorize]
-        [HttpGet]
+        [HttpGet] 
         [Route("api/data/authenticate")]
         public IHttpActionResult GetForAuthenticate() { 
         

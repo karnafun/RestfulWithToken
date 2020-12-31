@@ -12,10 +12,10 @@ namespace WebApiExample
 		public void Configuration(IAppBuilder app) {
 
 			app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-			var myProvider = new ServerAuthenticationProvider();
+			var myProvider = new ServerAuthenticationProvider(); 
 			OAuthAuthorizationServerOptions options = new OAuthAuthorizationServerOptions
 			{
-				AllowInsecureHttp = true,
+				
 				TokenEndpointPath = new PathString("/token"),
 				AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
 				Provider = myProvider

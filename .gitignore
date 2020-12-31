@@ -2,3 +2,7 @@
 /.vs
 /debug
 /bin
+bin
+/WebApiExample/bin
+/WebApiExample/obj
+

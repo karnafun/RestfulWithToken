@@ -132,6 +132,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Client\AjaxCalls.js" />
     <Content Include="Client\index.html" />
     <Content Include="Content\Site.css" />
     <Content Include="default.aspx" />

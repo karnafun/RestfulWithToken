@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApiExample.Providers;
 
 namespace WebApiExample
 {
@@ -11,7 +12,8 @@ namespace WebApiExample
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			
+			DBServices db = new DBServices();
+			db.GetUsers(); 
 		}
 	}
 }

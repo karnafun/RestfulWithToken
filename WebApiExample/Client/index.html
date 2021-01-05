@@ -43,14 +43,14 @@
         }
 
         function LogOut() {
-            localStorage.setItem("username", undefined);
-            localStorage.setItem("password", undefined);
-            localStorage.setItem("access_token", undefined);
+			sessionStorage.removeItem("username");
+			sessionStorage.removeItem("password");
+			sessionStorage.removeItem("access_token");
         }
 
         function getTokenAjax(username, password) {
             let data = {
-                username: username,
+                username: username, 
                 password: password,
                 grant_type: "password"
             }
@@ -59,9 +59,9 @@
                 type: "POST",
                 data: { username: username, password: password, grant_type: "password" },
                 success: function (res) {
-                    localStorage.setItem("username", username);
-                    localStorage.setItem("password", password);
-                    localStorage.setItem("access_token", res.access_token);
+					sessionStorage.setItem("username", username);
+					sessionStorage.setItem("password", password);
+					sessionStorage.setItem("access_token", res.access_token);
                     successCB(res);
 
                 },
@@ -73,8 +73,8 @@
         // Retrieve
 
         function getPersonalInfo() {            
-            let username = localStorage.getItem("username");
-            let password = localStorage.getItem("password");
+			let username = sessionStorage.getItem("username");
+			let password = sessionStorage.getItem("password");
 
 			AuthenticateFunction(username, password, successCB, errorCB )
         }
@@ -88,7 +88,7 @@
         }
 		function errorCB(err) {
             let res = "Error:\n" + err.responseText
-            $('#results_ph').html(res)
+            $('#results_ph').html(res) 
         }
 
 
